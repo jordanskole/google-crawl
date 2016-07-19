@@ -54,6 +54,6 @@ app.post('/search', upload.array(), function (req, res) {
   }
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(process.env.PORT, function () {
+  console.log('Example app listening on port ' + process.env.PORT + '!');
 });
