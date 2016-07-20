@@ -24,7 +24,7 @@ app.post('/search', upload.array(), function (req, res) {
     // looks like we received a query in the post request.
     // lets build our google search query
     var query = 'https://google.com/search?q=' + req.body.q
-    res.status(200)
+    res.write('building response')
     console.log('fire up nightmare');
     // create a new nightmare
     nightmare = Nightmare();
@@ -35,21 +35,22 @@ app.post('/search', upload.array(), function (req, res) {
       .goto(query)
       .wait('div.rc > h3.r > a') // for now, keep it simple
       .evaluate(function () {
+        console.log('Evaluating the page');
         // and only grab the href from the first result
         // TODO: build this out to include more information from the result
         return document.querySelector('h3.r > a').getAttribute('href');
       })
       .end()
       .then(function (searchResult) {
-
+        console.log('Sending the response');
         var data = {
           query: query,
           result: searchResult
         }
 
-        if ('webhook' in req.body) {
-          // TODO: fire the webhook here
-        }
+        // if ('webhook' in req.body) {
+        //   // TODO: fire the webhook here
+        // }
 
         res.json(data);
         return;
