@@ -1,8 +1,8 @@
 # Google Crawl with [Nightmare.js](http://www.nightmarejs.org/)
 
-> :warning: this app is currently structured to only run locally, due to a timeout issue (I need to move the process from `web` to `worker`). Stay tuned!
-
 The "Google Crawl" micro-service application is a simple API with a single endpoint. Send a `POST` request to `/search` with a `q` parameter, and it will return the `href` of the first organic listing on the page.
+
+> :warning: this app is currently structured to only run locally, due to a timeout issue (I need to move the process from `web` to `worker`). Stay tuned, more soon!
 
 ```json
 // example request
@@ -45,6 +45,6 @@ $ heroku local web
 
 ## Sending a request
 
-Send a simple `POST` request to the local endpoint (`localhost:3000/search`)
+Send a simple `POST` request to the local endpoint (`localhost:3000/search`), the body of the request can be `form`, `x-www-form-urlencoded` or a `json` request.
 
 ![](/images/postman_screen.png)
