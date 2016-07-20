@@ -23,8 +23,7 @@ app.post('/search', upload.array(), function (req, res) {
   if ('q' in req.body) {
     // looks like we received a query in the post request.
     // lets build our google search query
-    var query = 'https://google.com/search?q=' + req.body.q
-    res.write('building response')
+    var query = 'https://google.com/search?q=' + req.body.q    
     console.log('fire up nightmare');
     // create a new nightmare
     nightmare = Nightmare();
